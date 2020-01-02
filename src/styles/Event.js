@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-export const EvevtPageStyle = styled.div`
+export const EventPageStyle = styled.div`
   width: 100%;
-  height: 100vh;
   background-color: #6438cf;
 
   header {
@@ -17,12 +16,20 @@ export const EvevtPageStyle = styled.div`
         font-size: 18px;
         font-weight: 300;
         font-family: 'Open Sans', sans-serif;
+
+      }
+      .links {
+        a {
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }
 
   .hero {
-    margin: 0 auto;
+    margin: 30px auto;
     width: 60%
     display: flex;
     justify-content: space-between;
@@ -45,6 +52,33 @@ export const EvevtPageStyle = styled.div`
     img {
       width: 60%;
     }
+  }
+
+  footer {
+    bottom: 0;
+    padding: 20px;
+    p {
+      text-align: center;
+      font-size: 18px;
+      color: #fff;
+    }
+  }
+`;
+
+export const CardContainer = styled.section`
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  h2 {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 80px;
+    color: #666a7c;
+  }
+  .cards {
+    margin: 20px;
   }
 `;
 
