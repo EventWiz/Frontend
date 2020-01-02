@@ -9,17 +9,17 @@ const Login = () => {
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: '',
+      password: ''
     },
     validationSchema: Yup.object({
       email: Yup.string()
         .email('Invalid email address')
         .required('Email Address Required'),
-      password: Yup.string().required('Invalid Password'),
+      password: Yup.string().required('Invalid Password')
     }),
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
-    },
+    }
   });
 
   return (
@@ -29,25 +29,25 @@ const Login = () => {
         <p>{formik.errors.email}</p>
       ) : null}
       <Input
-        id="email"
-        name="email"
-        type="email"
+        id='email'
+        name='email'
+        type='email'
         onChange={formik.handleChange}
         value={formik.values.email}
-        placeholder="email"
+        placeholder='Email'
       />
       {formik.touched.password && formik.errors.password ? (
         <p>{formik.errors.password}</p>
       ) : null}
       <Input
-        id="password"
-        name="password"
-        type="password"
+        id='password'
+        name='password'
+        type='password'
         onChange={formik.handleChange}
         value={formik.values.password}
-        placeholder="password"
+        placeholder='Password'
       />
-      <Button type="submit">Login</Button>
+      <Button type='submit'>Login</Button>
     </Form>
   );
 };
