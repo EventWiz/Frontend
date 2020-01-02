@@ -1,11 +1,14 @@
 import { useFormik } from 'formik';
 import React from 'react';
+import { connect } from 'react-redux';
 import * as Yup from 'yup';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { logIn } from '../actions/auth';
 import { Button } from '../styles/shared/Button';
 import { Form } from '../styles/shared/Form';
 import { Input } from '../styles/shared/Input';
 
-const Login = () => {
+const Login = props => {
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -18,13 +21,14 @@ const Login = () => {
       password: Yup.string().required('Invalid Password'),
     }),
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      props.logIn(values);
     },
   });
 
   return (
     <Form onSubmit={formik.handleSubmit}>
       <h1>Log in</h1>
+      {props.error && <p>{props.error}</p>}
       {formik.touched.email && formik.errors.email ? (
         <p>{formik.errors.email}</p>
       ) : null}
@@ -47,9 +51,16 @@ const Login = () => {
         value={formik.values.password}
         placeholder="password"
       />
-      <Button type="submit">Login</Button>
+      <Button type="submit" disabled={props.isLoading}>
+        {props.loading ? <ClipLoader /> : 'Login'}
+      </Button>
     </Form>
   );
 };
 
-export default Login;
+const mapStateToProps = ({ authReducer }) => ({
+  loading: authReducer.loading,
+  error: authReducer.error,
+});
+
+export default connect(mapStateToProps, { logIn })(Login);
