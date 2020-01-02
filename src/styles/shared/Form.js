@@ -8,6 +8,11 @@ export const Form = styled.form`
   padding-top: 200px;
   margin: 0 auto;
 
+  @media (min-width: 320px) {
+    width: 100%;
+    padding: 80px 10px 10px 10px;
+  }
+
   h1 {
     color: #666a7c;
     font-weight: bolder;
