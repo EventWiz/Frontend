@@ -3,15 +3,14 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Login from './components/Login';
 import { GlobalStyle } from './styles/GlobalStyle';
-import EventCard from './components/EventCard';
+import EventPage from './components/EventPage';
 
 const App = () => {
   return (
     <Router>
       <GlobalStyle />
-      <Header />
       <Switch>
-        <Route exact path='/' component={EventCard} />
+        <Route exact path='/' component={EventPage} />
         <Route path='/login' component={Login} />
       </Switch>
     </Router>

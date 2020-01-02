@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllEvents } from '../actions/events';
-import { EventCardStyle } from '../styles/EventCard';
+import { EventCardStyle } from '../styles/Event';
 
 const EventCard = props => {
   const { id, img, title, start_date, location } = props.events[0];

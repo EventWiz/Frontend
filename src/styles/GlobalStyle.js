@@ -18,6 +18,8 @@ export const GlobalStyle = createGlobalStyle`
   figure, figcaption, footer, header, hgroup, 
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
+    @import url('https://fonts.googleapis.com/css?family=Lato:400,900&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
     margin: 0;
     padding: 0;
     border: 0;
