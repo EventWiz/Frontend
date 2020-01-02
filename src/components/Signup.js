@@ -31,7 +31,14 @@ const Signup = props => {
         .required('Password is Required'),
     }),
     onSubmit: values => {
-      props.signUp(values);
+      props.signUp(values).then(res => {
+        if (res) {
+          props.history.push('/login', {
+            message:
+              'Your Account have been created successfully, Please Login 😊',
+          });
+        }
+      });
     },
   });
 
