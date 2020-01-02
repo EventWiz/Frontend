@@ -29,6 +29,9 @@ const Login = props => {
     <Form onSubmit={formik.handleSubmit}>
       <h1>Log in</h1>
       {props.error && <p>{props.error}</p>}
+      {props.history.location.state?.message && (
+        <p>{props.history.location.state.message}</p>
+      )}
       {formik.touched.email && formik.errors.email ? (
         <p>{formik.errors.email}</p>
       ) : null}
