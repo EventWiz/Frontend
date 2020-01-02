@@ -22,7 +22,11 @@ const Login = props => {
       password: Yup.string().required('Invalid Password'),
     }),
     onSubmit: values => {
-      props.logIn(values);
+      props.logIn(values).then(res => {
+        if (res) {
+          props.history.push('/');
+        }
+      });
     },
   });
 
