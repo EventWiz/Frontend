@@ -8,6 +8,11 @@ export const Form = styled.form`
   padding-top: 200px;
   margin: 0 auto;
 
+  @media (min-width: 320px) {
+    width: 100%;
+    padding: 80px 10px 10px 10px;
+  }
+
   h1 {
     color: #666a7c;
     font-weight: bolder;
@@ -18,5 +23,13 @@ export const Form = styled.form`
   p {
     font-size: 1.3rem;
     color: #f70d1a;
+
+    &:nth-last-child(1) {
+      color: #000;
+      margin: 10px 0;
+      a {
+        color: #6438cf;
+      }
+    }
   }
 `;
