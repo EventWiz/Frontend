@@ -18,5 +18,13 @@ export const Form = styled.form`
   p {
     font-size: 1.3rem;
     color: #f70d1a;
+
+    &:nth-last-child(1) {
+      color: #000;
+      margin: 10px 0;
+      a {
+        color: #6438cf;
+      }
+    }
   }
 `;

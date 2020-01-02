@@ -7,6 +7,7 @@ import { signUp } from '../actions/auth';
 import { Button } from '../styles/shared/Button';
 import { Form } from '../styles/shared/Form';
 import { Input } from '../styles/shared/Input';
+import { Link } from 'react-router-dom';
 
 const Signup = props => {
   const formik = useFormik({
@@ -93,6 +94,9 @@ const Signup = props => {
       <Button type="submit" disabled={props.isLoading}>
         {props.loading ? <ClipLoader /> : 'Sign Up'}
       </Button>
+      <p>
+        Already have an account? <Link to="/login">Login here</Link>
+      </p>
     </Form>
   );
 };
