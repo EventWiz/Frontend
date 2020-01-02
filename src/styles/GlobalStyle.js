@@ -66,4 +66,8 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 500;
   }
 
+  input, a, button {
+    outline: none;
+  }
+
 `;

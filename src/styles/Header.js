@@ -11,7 +11,7 @@ export const HeaderContainer = styled.header`
     h1 {
       font-size: 4rem;
       font-family: 'Luckiest Guy', cursive;
-      color: #579afe;
+      color: #6438CF;
     }
   }
 `;

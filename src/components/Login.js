@@ -38,7 +38,7 @@ const Login = props => {
         type="email"
         onChange={formik.handleChange}
         value={formik.values.email}
-        placeholder="email"
+        placeholder="Email"
       />
       {formik.touched.password && formik.errors.password ? (
         <p>{formik.errors.password}</p>
@@ -49,7 +49,7 @@ const Login = props => {
         type="password"
         onChange={formik.handleChange}
         value={formik.values.password}
-        placeholder="password"
+        placeholder="Password"
       />
       <Button type="submit" disabled={props.isLoading}>
         {props.loading ? <ClipLoader /> : 'Login'}
