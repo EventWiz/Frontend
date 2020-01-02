@@ -18,7 +18,7 @@ export const getAllEvents = () => async dispatch => {
   } catch (error) {
     dispatch({
       type: FETCH_EVENTS_FAILURE,
-      payload: err.response.data.message
+      payload: error.response.data.message
     });
   }
 };

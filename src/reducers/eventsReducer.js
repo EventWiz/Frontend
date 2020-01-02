@@ -3,10 +3,18 @@ import {
   FETCH_EVENTS_SUCCESS,
   FETCH_EVENTS_FAILURE
 } from '../actions/events';
-
+import img from '../assets/img.jpg';
 const initialState = {
   loading: false,
-  events: [],
+  events: [
+    {
+      id: 1,
+      img: img,
+      title: 'Social Media Week',
+      start_date: '12-01-2020',
+      location: 'Lagos'
+    }
+  ],
   error: ''
 };
 
