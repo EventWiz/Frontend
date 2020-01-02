@@ -69,6 +69,8 @@ export const CardContainer = styled.section`
   width: 100%;
   background-color: #fff;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
   h2 {
     text-align: center;
     font-family: 'Lato', sans-serif;
@@ -78,13 +80,16 @@ export const CardContainer = styled.section`
     color: #666a7c;
   }
   .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin: 20px;
   }
 `;
 
 export const EventCardStyle = styled.div`
   width: 250px;
-  height: 250px;
+  height: 270px;
   box-shadow: -1px 1px 5px 1px rgba(219, 219, 219, 1);
 
   img {

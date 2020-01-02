@@ -13,6 +13,27 @@ const initialState = {
       title: 'Social Media Week',
       start_date: '12-01-2020',
       location: 'Lagos'
+    },
+    {
+      id: 2,
+      img: img,
+      title: 'Social Media Week',
+      start_date: '12-01-2020',
+      location: 'Lagos'
+    },
+    {
+      id: 3,
+      img: img,
+      title: 'Social Media Week',
+      start_date: '12-01-2020',
+      location: 'Lagos'
+    },
+    {
+      id: 4,
+      img: img,
+      title: 'Social Media Week',
+      start_date: '12-01-2020',
+      location: 'Lagos'
     }
   ],
   error: ''

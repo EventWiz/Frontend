@@ -34,13 +34,22 @@ const EventPage = props => {
         <h2>Explore Events</h2>
         <div className='cards'>
           {props.events.map(event => (
-            <EventCard event={event} />
+            <EventCard event={event} key={event.id} />
           ))}
         </div>
       </CardContainer>
 
       <footer>
-        <p>Made with ❤️ and 💪🏽</p>
+        <p>
+          Made with{' '}
+          <span role='img' aria-label='heart'>
+            ❤️{' '}
+          </span>{' '}
+          and{' '}
+          <span role='img' aria-label='bicep'>
+            💪🏽
+          </span>
+        </p>
       </footer>
     </EventPageStyle>
   );
