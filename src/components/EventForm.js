@@ -65,11 +65,11 @@ const EventForm = props => (
           <label>Location</label>
           <Field type='text' name='location' placeholder='Event location' />
           <label>Start Date</label>
-          <Field type='text' name='start_date' placeholder='Start' />
+          <Field type='date' name='start_date' placeholder='Start' />
           <label>End Date</label>
-          <Field type='text' name='end_date' placeholder='End' />
+          <Field type='date' name='end_date' placeholder='End' />
           <label>Number of Attendees</label>
-          <Field type='text' name='capacity' placeholder='No of attendees' />
+          <Field type='number' name='capacity' placeholder='No of attendees' />
           <button type='submit' disabled={props.isLoading}>
             {props.loading ? <ClipLoader /> : 'Save and Continue'}
           </button>
