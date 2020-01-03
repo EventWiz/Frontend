@@ -33,70 +33,77 @@ const Agenda = props => (
         name='agenda'
         render={arrayHelpers => (
           <BackDesign>
-          <FormField onSubmit={handleSubmit}>
-            <h1>Create Agenda</h1>
-            {values.agenda && values.agenda.length > 0 ? (
-              values.agenda.map((agenda, index) => (
-                <div className='unique' key={index}>
-               
-                  <label>Topic</label>
-                  <Field
-                    name={`agenda.${index}.topic`}
-                    placeholder='Session topic'
-                    type='text'
-                  />
-                  <label>Speaker</label>
-                  <Field
-                    name={`agenda.${index}.speaker`}
-                    placeholder='Speaker name'
-                    type='text'
-                  />
-                  <label>Venue</label>
-                  <Field name={`agenda.${index}.venue`} placeholder='Venue' type='text' />
+            <FormField onSubmit={handleSubmit}>
+              <h1>Create Agenda</h1>
+              {values.agenda && values.agenda.length > 0 ? (
+                values.agenda.map((agenda, index) => (
+                  <div className='unique' key={index}>
+                    <label>Topic</label>
+                    <Field
+                      name={`agenda.${index}.topic`}
+                      placeholder='Session topic'
+                      type='text'
+                    />
+                    <label>Speaker</label>
+                    <Field
+                      name={`agenda.${index}.speaker`}
+                      placeholder='Speaker name'
+                      type='text'
+                    />
+                    <label>Venue</label>
+                    <Field
+                      name={`agenda.${index}.venue`}
+                      placeholder='Venue'
+                      type='text'
+                    />
 
-                  <label>Start Time</label>
-                  <Field
-                    name={`agenda.${index}.start_time`}
-                    placeholder='Start time'
-                    type='time'
-                  />
-                  <label>End Time</label>
-                  <Field
-                    name={`agenda.${index}.end_time`}
-                    placeholder='End time'
-                    type='time'
-                  />
-                  <label>Date</label>
-                  <Field name={`agenda.${index}.date`} placeholder='Date' />
-                  <div className='icon'>
-                    <button
-                      type='button'
-                      onClick={() => arrayHelpers.remove(index)}
-                    >
-                      Remove
-                    </button>
-                    <button
-                      type='button'
-                      onClick={() => arrayHelpers.insert(index, '')}
-                    >
-                      Add
-                    </button>
+                    <label>Start Time</label>
+                    <Field
+                      name={`agenda.${index}.start_time`}
+                      placeholder='Start time'
+                      type='time'
+                    />
+                    <label>End Time</label>
+                    <Field
+                      name={`agenda.${index}.end_time`}
+                      placeholder='End time'
+                      type='time'
+                    />
+                    <label>Date</label>
+                    <Field
+                      name={`agenda.${index}.date`}
+                      placeholder='Date'
+                      type='date'
+                    />
+                    <div className='icon'>
+                      <button
+                        type='button'
+                        onClick={() => arrayHelpers.remove(index)}
+                      >
+                        Remove
+                      </button>
+                      <button
+                        type='button'
+                        onClick={() => arrayHelpers.insert(index, '')}
+                      >
+                        Add
+                      </button>
+                    </div>
                   </div>
-                  </div>
-              ))
-            ) : (
-              <button
-                className='add'
-                type='button'
-                onClick={() => arrayHelpers.push('')}
-              >
-                Add a Session
-              </button>
-            )}
-            <Button type='submit' disabled={props.isLoading}>
-              {props.loading ? <ClipLoader /> : 'Save'}
-            </Button>
-          </FormField>
+                ))
+              ) : (
+                <button
+                  className='add'
+                  type='button'
+                  onClick={() => arrayHelpers.push('')}
+                >
+                  Add a Session
+                </button>
+              )}
+              <Button type='submit' disabled={props.isLoading}>
+                {props.loading ? <ClipLoader /> : 'Save'}
+              </Button>
+            </FormField>
           </BackDesign>
         )}
       />
