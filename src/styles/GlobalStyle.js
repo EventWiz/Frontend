@@ -24,6 +24,10 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    font-size: 62.5%;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure, 
@@ -33,6 +37,8 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     line-height: 1;
+    @import url('https://fonts.googleapis.com/css?family=Lato:400,900&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
   }
 
   ol, ul {
