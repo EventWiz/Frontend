@@ -6,7 +6,7 @@ import { GlobalStyle } from './styles/GlobalStyle';
 import EventPage from './components/EventPage';
 import Signup from './components/Signup';
 import Event from './components/Event';
-import { PrivateRoute } from './components/PrivateRoute';
+// import { PrivateRoute } from './components/PrivateRoute';
 import { loggedIn } from './actions/auth';
 import { getToken } from './utils/localStorage';
 import Logout from './components/Logout';
@@ -27,7 +27,7 @@ const App = ({ loggedIn: logInUser }) => {
         <Route exact path="/" component={EventPage} />
         <AuthRoute path="/login" component={Login} />
         <AuthRoute path="/signup" component={Signup} />
-        <PrivateRoute path="/events/:id" component={Event} />
+        <Route path="/events/:id" component={Event} />
         <Route path="/logout" component={Logout} />
       </Switch>
     </Router>
