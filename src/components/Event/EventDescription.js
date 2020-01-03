@@ -17,27 +17,28 @@ const EventDescription = ({ event, loggedIn, rsvpEvent, registered }) => {
         <p>{event.desc}</p>
         {/* Bad Code Need Refactoring. Past Time already */}
         {registered && <h3>Your Ticket Code {registered}</h3>}
-        {!registered && loggedIn ? (
-          <button
-            className="desc-button"
-            disabled={event.registered}
-            onClick={() => rsvpEvent(event.id)}
-          >
-            {event.registered ? 'Registered' : 'Get Tickets'}
-          </button>
-        ) : (
-          <Link
-            className="desc-button"
-            to={{
-              pathname: '/login',
-              state: {
-                prevLocation: history.location.pathname,
-              },
-            }}
-          >
-            Login to Get Tickets
-          </Link>
-        )}
+        {!registered &&
+          (loggedIn ? (
+            <button
+              className="desc-button"
+              disabled={event.registered}
+              onClick={() => rsvpEvent(event.id)}
+            >
+              {event.registered ? 'Registered' : 'Get Tickets'}
+            </button>
+          ) : (
+            <Link
+              className="desc-button"
+              to={{
+                pathname: '/login',
+                state: {
+                  prevLocation: history.location.pathname,
+                },
+              }}
+            >
+              Login to Get Tickets
+            </Link>
+          ))}
         <p>{event.capacity} Tickets Left</p>
       </section>
       <section>
