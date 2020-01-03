@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
 import Login from './components/Login';
 import { GlobalStyle } from './styles/GlobalStyle';
 import EventPage from './components/EventPage';
