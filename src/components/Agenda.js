@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import { connect } from 'react-redux';
 import { Formik, Form, Field, FieldArray } from 'formik';
 import { FormField } from '../styles/shared/FormField';
 
 const Agenda = () => {
   return (
-    <>
       <Formik
         initialValues={{ agenda: [] }}
         onSubmit={values =>
@@ -22,12 +23,24 @@ const Agenda = () => {
                 {values.agenda && values.agenda.length > 0 ? (
                   values.agenda.map((agenda, index) => (
                     <div key={index}>
-                      <Field name={`topic.${index}`} placeholder='Session topic' />
-                      <Field name={`speaker.${index}`} placeholder='Speaker name'/>
+                      <Field
+                        name={`topic.${index}`}
+                        placeholder='Session topic'
+                      />
+                      <Field
+                        name={`speaker.${index}`}
+                        placeholder='Speaker name'
+                      />
                       <Field name={`venue.${index}`} placeholder='Venue' />
-                      <Field name={`start_time.${index}`} placeholder='Start time' />
-                      <Field name={`end_time.${index}`} placeholder='End time' />
-                      <Field name={`date.${index}`} placeholder='Date'/>
+                      <Field
+                        name={`start_time.${index}`}
+                        placeholder='Start time'
+                      />
+                      <Field
+                        name={`end_time.${index}`}
+                        placeholder='End time'
+                      />
+                      <Field name={`date.${index}`} placeholder='Date' />
                       <div className='icon'>
                         <button
                           type='button'
@@ -55,7 +68,7 @@ const Agenda = () => {
                 )}
                 <div className='next'>
                   <Link to='/preview' className='next'>
-                    Next
+                    Save and Continue
                   </Link>
                 </div>
               </FormField>
@@ -63,7 +76,6 @@ const Agenda = () => {
           />
         )}
       />
-    </>
   );
 };
 

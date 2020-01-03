@@ -4,7 +4,8 @@ import Login from './components/Login';
 import { GlobalStyle } from './styles/GlobalStyle';
 import EventPage from './components/EventPage';
 import Signup from './components/Signup';
-import MainForm from './components/MainForm';
+// import MainForm from './components/MainForm';
+import EventForm from './components/EventForm';
 
 const App = () => {
   return (
@@ -14,8 +15,8 @@ const App = () => {
         <Route exact path='/' component={EventPage} />
         <Route path='/login' component={Login} />
         <Route path='/signup' component={Signup} />
-        <Route path='/create-event' component={MainForm} />
-        <Route path='/agenda' component={MainForm} />
+        <Route path='/create-event' component={EventForm} />
+        {/* <Route path='/agenda' component={Agenda} /> */}
       </Switch>
     </Router>
   );

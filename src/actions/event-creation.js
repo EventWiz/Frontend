@@ -13,7 +13,8 @@ export const eventCreate = event => ({
 export const createEvent = details => async dispatch => {
   try {
     dispatch({ type: CREATE_EVENT_LOADING });
-    const eventDetails = await axios.post(`${apiURL}/api/events`, details);
+    console.log(details)
+    const eventDetails = await axios.post(`${apiURL}/api/events/create`, details);
     dispatch(eventCreate(eventDetails));
     return eventDetails;
   } catch (error) {
