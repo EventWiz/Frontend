@@ -1,33 +1,31 @@
 import {
-  CREATE_EVENT_LOADING,
-  CREATE_EVENT_SUCCESS,
-  CREATE_EVENT_FAILURE
-} from '../actions/event-creation';
+  CREATE_SESSION_LOADING,
+  CREATE_SESSION_SUCCESS,
+  CREATE_SESSION_FAILURE
+} from '../actions/sessions';
 
 const initialState = {
-  details: null,
+  details: [],
   loading: false,
   error: ''
 };
 
-const createEventReducer = (state = initialState, action) => {
+const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_EVENT_LOADING:
+    case CREATE_SESSION_LOADING:
       return {
         ...state,
         error: '',
         loading: true
       };
-    case CREATE_EVENT_SUCCESS:
+    case CREATE_SESSION_SUCCESS:
       return {
         ...state,
         error: '',
         loading: false,
-        details: {
-          ...action.payload
-        }
+        details: [...action.payload]
       };
-    case CREATE_EVENT_FAILURE:
+    case CREATE_SESSION_FAILURE:
       return {
         ...state,
         error: action.payload,
@@ -38,4 +36,4 @@ const createEventReducer = (state = initialState, action) => {
   }
 };
 
-export default createEventReducer;
+export default sessionReducer;

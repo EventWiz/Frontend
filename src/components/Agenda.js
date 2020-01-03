@@ -1,82 +1,96 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useFormik } from 'formik';
 import { connect } from 'react-redux';
-import { Formik, Form, Field, FieldArray } from 'formik';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { createSession } from '../actions/sessions';
+import { Formik, Field, FieldArray } from 'formik';
 import { FormField } from '../styles/shared/FormField';
+import { Button } from '../styles/shared/Button';
 
-const Agenda = () => {
-  return (
-      <Formik
-        initialValues={{ agenda: [] }}
-        onSubmit={values =>
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-          }, 500)
+const Agenda = props => (
+  <Formik
+    initialValues={{
+      agenda: [
+        {
+          topic: '',
+          speaker: '',
+          venue: '',
+          start_time: '',
+          end_time: '',
+          date: ''
         }
-        render={({ values }) => (
-          <FieldArray
-            name='agenda'
-            render={arrayHelpers => (
-              <FormField>
-                <h1>Create Agenda</h1>
-                {values.agenda && values.agenda.length > 0 ? (
-                  values.agenda.map((agenda, index) => (
-                    <div key={index}>
-                      <Field
-                        name={`topic.${index}`}
-                        placeholder='Session topic'
-                      />
-                      <Field
-                        name={`speaker.${index}`}
-                        placeholder='Speaker name'
-                      />
-                      <Field name={`venue.${index}`} placeholder='Venue' />
-                      <Field
-                        name={`start_time.${index}`}
-                        placeholder='Start time'
-                      />
-                      <Field
-                        name={`end_time.${index}`}
-                        placeholder='End time'
-                      />
-                      <Field name={`date.${index}`} placeholder='Date' />
-                      <div className='icon'>
-                        <button
-                          type='button'
-                          onClick={() => arrayHelpers.remove(index)}
-                        >
-                          -
-                        </button>
-                        <button
-                          type='button'
-                          onClick={() => arrayHelpers.insert(index, '')}
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <button
-                    className='add'
-                    type='button'
-                    onClick={() => arrayHelpers.push('')}
-                  >
-                    Add a Session
-                  </button>
-                )}
-                <div className='next'>
-                  <Link to='/preview' className='next'>
-                    Save and Continue
-                  </Link>
+      ]
+    }}
+    onSubmit={values => {
+      props.createSession(values).then(res => {
+        if (res) {
+          props.history.push(`/events`);
+        }
+      });
+    }}
+    render={({ values, handleSubmit }) => (
+      <FieldArray
+        name='agenda'
+        render={arrayHelpers => (
+          <FormField onSubmit={handleSubmit}>
+            <h1>Create Agenda</h1>
+            {values.agenda && values.agenda.length > 0 ? (
+              values.agenda.map((agenda, index) => (
+                <div key={index}>
+                  <Field
+                    name={`agenda.${index}.topic`}
+                    placeholder='Session topic'
+                  />
+                  <Field
+                    name={`agenda.${index}.speaker`}
+                    placeholder='Speaker name'
+                  />
+                  <Field name={`agenda.${index}.venue`} placeholder='Venue' />
+                  <Field
+                    name={`agenda.${index}.start_time`}
+                    placeholder='Start time'
+                  />
+                  <Field
+                    name={`agenda.${index}.end_time`}
+                    placeholder='End time'
+                  />
+                  <Field name={`agenda.${index}.date`} placeholder='Date' />
+                  <div className='icon'>
+                    <button
+                      type='button'
+                      onClick={() => arrayHelpers.remove(index)}
+                    >
+                      -
+                    </button>
+                    <button
+                      type='button'
+                      onClick={() => arrayHelpers.insert(index, '')}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
-              </FormField>
+              ))
+            ) : (
+              <button
+                className='add'
+                type='button'
+                onClick={() => arrayHelpers.push('')}
+              >
+                Add a Session
+              </button>
             )}
-          />
+            <Button type='submit' disabled={props.isLoading}>
+              {props.loading ? <ClipLoader /> : 'Save and Continue'}
+            </Button>
+          </FormField>
         )}
       />
-  );
-};
+    )}
+  />
+);
 
-export default Agenda;
+const mapStateToProps = ({ sessionReducer }) => ({
+  loading: sessionReducer.loading,
+  error: sessionReducer.error
+});
+export default connect(mapStateToProps, { createSession })(Agenda);
