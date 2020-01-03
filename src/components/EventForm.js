@@ -6,6 +6,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import { createEvent } from '../actions/event-creation';
 import { FormField, BackDesign } from '../styles/shared/FormField';
 import { imgUrl, preset } from '../config';
+import Layout from './Layout';
 
 const EventForm = props => (
   <Formik
@@ -29,51 +30,57 @@ const EventForm = props => (
     }}
   >
     {formik => (
-      <BackDesign>
-        <FormField onSubmit={formik.handleSubmit}>
-          <h1>Tell us about your event</h1>
-          <label>Title</label>
-          <Field type='text' name='title' placeholder='Short event title' />
-          <label>Description</label>
-          <Field
-            type='text'
-            name='desc'
-            placeholder='What is your event about?'
-          />
-          <label>Event Banner/Image</label>
-          <input
-            name='img'
-            type='file'
-            accept='image/*'
-            onChange={event => {
-              const file = event.currentTarget.files[0];
-              console.log(file);
-              const formData = new FormData();
-              const config = {
-                headers: { 'content-type': 'multipart/form-data' }
-              };
-              formData.append('file', file);
-              formData.append('upload_preset', preset);
-              console.log(preset);
-              axios.post(imgUrl, formData, config).then(data => {
-                console.log(data.data.secure_url);
-                formik.setFieldValue('img', data.data.secure_url);
-              });
-            }}
-          />
-          <label>Location</label>
-          <Field type='text' name='location' placeholder='Event location' />
-          <label>Start Date</label>
-          <Field type='date' name='start_date' placeholder='Start' />
-          <label>End Date</label>
-          <Field type='date' name='end_date' placeholder='End' />
-          <label>Number of Attendees</label>
-          <Field type='number' name='capacity' placeholder='No of attendees' />
-          <button type='submit' disabled={props.isLoading}>
-            {props.loading ? <ClipLoader /> : 'Save and Continue'}
-          </button>
-        </FormField>
-      </BackDesign>
+      <Layout>
+        <BackDesign>
+          <FormField onSubmit={formik.handleSubmit}>
+            <h1>Tell us about your event</h1>
+            <label>Title</label>
+            <Field type='text' name='title' placeholder='Short event title' />
+            <label>Description</label>
+            <Field
+              type='text'
+              name='desc'
+              placeholder='What is your event about?'
+            />
+            <label>Event Banner/Image</label>
+            <input
+              name='img'
+              type='file'
+              accept='image/*'
+              onChange={event => {
+                const file = event.currentTarget.files[0];
+                console.log(file);
+                const formData = new FormData();
+                const config = {
+                  headers: { 'content-type': 'multipart/form-data' }
+                };
+                formData.append('file', file);
+                formData.append('upload_preset', preset);
+                console.log(preset);
+                axios.post(imgUrl, formData, config).then(data => {
+                  console.log(data.data.secure_url);
+                  formik.setFieldValue('img', data.data.secure_url);
+                });
+              }}
+            />
+            <label>Location</label>
+            <Field type='text' name='location' placeholder='Event location' />
+            <label>Start Date</label>
+            <Field type='date' name='start_date' placeholder='Start' />
+            <label>End Date</label>
+            <Field type='date' name='end_date' placeholder='End' />
+            <label>Number of Attendees</label>
+            <Field
+              type='number'
+              name='capacity'
+              placeholder='No of attendees'
+            />
+            <button type='submit' disabled={props.isLoading}>
+              {props.loading ? <ClipLoader /> : 'Save and Continue'}
+            </button>
+          </FormField>
+        </BackDesign>
+      </Layout>
     )}
   </Formik>
 );
