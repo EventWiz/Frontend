@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { createEvent } from '../actions/event-creation';
 import { FormField, BackDesign } from '../styles/shared/FormField';
-import { Button } from '../styles/shared/Button';
 import { imgUrl, preset } from '../config';
 
 const EventForm = props => (

@@ -37,8 +37,8 @@ const Agenda = props => (
             <h1>Create Agenda</h1>
             {values.agenda && values.agenda.length > 0 ? (
               values.agenda.map((agenda, index) => (
-                // <div key={index}>
-                <>
+                <div className='unique' key={index}>
+               
                   <label>Topic</label>
                   <Field
                     name={`agenda.${index}.topic`}
@@ -82,7 +82,7 @@ const Agenda = props => (
                       Add
                     </button>
                   </div>
-                  </>
+                  </div>
               ))
             ) : (
               <button

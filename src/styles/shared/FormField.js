@@ -33,7 +33,13 @@ export const FormField = styled.form`
     font-size: 3.5rem;
     margin: 20px 0;
   }
-
+  .unique {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
   p {
     font-size: 1.3rem;
     color: #f70d1a;
