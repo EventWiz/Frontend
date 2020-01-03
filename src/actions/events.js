@@ -5,6 +5,7 @@ import { axiosWithAuth } from '../utils/axiosInstance';
 export const FETCH_EVENTS_LOADING = 'FETCH_EVENTS_LOADING';
 export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS';
 export const FETCH_EVENT_SUCCESS = 'FETCH_EVENT_SUCCESS';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const FETCH_EVENTS_FAILURE = 'FETCH_EVENTS_FAILURE';
 
 export const getAllEvents = () => async dispatch => {
@@ -42,8 +43,12 @@ export const getEvent = id => async dispatch => {
 export const rsvpEvent = id => async dispatch => {
   dispatch({ type: FETCH_EVENTS_LOADING });
   try {
-    await axiosWithAuth().post(`${apiURL}/api/rsvp/create`, {
+    const registered = await axiosWithAuth().post(`${apiURL}/api/rsvp/create`, {
       event_id: id,
+    });
+    dispatch({
+      type: REGISTER_SUCCESS,
+      payload: registered.data.rsvpDetails.ticket_no,
     });
   } catch (error) {
     dispatch({

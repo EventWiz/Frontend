@@ -45,6 +45,12 @@ export const EventDescriptionContainer = styled.div`
         text-align: center;
       }
 
+      h3 {
+        font-size: 5rem;
+        font-weight: 700;
+        text-align: center;
+      }
+
       p {
         font-size: 1.5rem;
         margin: 25px 0;

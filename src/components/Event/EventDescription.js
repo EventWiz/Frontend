@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { EventDescriptionContainer } from './event.style';
 
-const EventDescription = ({ event, loggedIn, rsvpEvent }) => {
+const EventDescription = ({ event, loggedIn, rsvpEvent, registered }) => {
   const history = useHistory();
   return (
     <EventDescriptionContainer>
@@ -15,7 +15,9 @@ const EventDescription = ({ event, loggedIn, rsvpEvent }) => {
         </div>
         <h2>{event.title}</h2>
         <p>{event.desc}</p>
-        {loggedIn ? (
+        {/* Bad Code Need Refactoring. Past Time already */}
+        {registered && <h3>Your Ticket Code {registered}</h3>}
+        {!registered && loggedIn ? (
           <button
             className="desc-button"
             disabled={event.registered}

@@ -3,12 +3,14 @@ import {
   FETCH_EVENTS_SUCCESS,
   FETCH_EVENT_SUCCESS,
   FETCH_EVENTS_FAILURE,
+  REGISTER_SUCCESS,
 } from '../actions/events';
 
 const initialState = {
   loading: false,
   events: [],
   event: null,
+  registered: null,
   error: '',
 };
 
@@ -31,6 +33,13 @@ const eventReducer = (state = initialState, action) => {
       return {
         ...state,
         event: action.payload,
+        loading: false,
+        error: '',
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        registered: action.payload,
         loading: false,
         error: '',
       };

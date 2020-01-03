@@ -4,7 +4,14 @@ import { connect } from 'react-redux';
 import EventDescription from './EventDescription';
 import EventAgenda from './EventAgenda';
 
-const Event = ({ getEvent: fetchEvent, match, event, loggedIn, rsvpEvent }) => {
+const Event = ({
+  getEvent: fetchEvent,
+  match,
+  event,
+  loggedIn,
+  rsvpEvent,
+  registered,
+}) => {
   const eventId = match.params?.eventId;
 
   useEffect(() => {
@@ -19,6 +26,7 @@ const Event = ({ getEvent: fetchEvent, match, event, loggedIn, rsvpEvent }) => {
             event={event}
             loggedIn={loggedIn}
             rsvpEvent={rsvpEvent}
+            registered={registered}
           />
           <EventAgenda sessions={event.Sessions} />
         </React.Fragment>
@@ -30,6 +38,7 @@ const Event = ({ getEvent: fetchEvent, match, event, loggedIn, rsvpEvent }) => {
 const mapStateToProps = ({ eventReducer, authReducer }) => ({
   event: eventReducer.event,
   loggedIn: authReducer.loggedIn,
+  registered: eventReducer.registered,
 });
 
 export default connect(mapStateToProps, { getEvent, rsvpEvent })(Event);
