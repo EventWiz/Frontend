@@ -18,6 +18,9 @@ export const EventPageStyle = styled.div`
         font-family: 'Open Sans', sans-serif;
 
       }
+      img {
+        width: 100px
+      }
       .links {
         a {
           font-weight: 500;
