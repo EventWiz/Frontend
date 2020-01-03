@@ -1,22 +1,35 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { GoLocation, GoCalendar, GoClock } from 'react-icons/go';
 import { EventDescriptionContainer } from './event.style';
 import { Link } from 'react-router-dom';
 
-const EventDescription = () => {
+const EventDescription = ({ event, loggedIn }) => {
+  const history = useHistory();
   return (
     <EventDescriptionContainer>
       <section>
         <div>
           <Link to="/">&larr; Back to Events</Link>
         </div>
-        <h2>Eventz</h2>
-        <p>
-          conference of Amazing Johnson Friends, with over 2000 attendees every
-          year, and 20 fun events
-        </p>
-        <button>Get Tickets</button>
-        <p>325 Tickets Left</p>
+        <h2>{event.title}</h2>
+        <p>{event.desc}</p>
+        {loggedIn ? (
+          <button className="desc-button">Get Tickets</button>
+        ) : (
+          <Link
+            className="desc-button"
+            to={{
+              pathname: '/login',
+              state: {
+                prevLocation: history.location.pathname,
+              },
+            }}
+          >
+            Login to Get Tickets
+          </Link>
+        )}
+        <p>{event.capacity} Tickets Left</p>
       </section>
       <section>
         <div>

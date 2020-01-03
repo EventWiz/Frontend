@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from './components/Login';
 import { GlobalStyle } from './styles/GlobalStyle';
-import EventPage from './components/EventPage';
+import EventPage from './components/Events';
 import Signup from './components/Signup';
 import Event from './components/Event';
 // import { PrivateRoute } from './components/PrivateRoute';
@@ -27,7 +27,7 @@ const App = ({ loggedIn: logInUser }) => {
         <Route exact path="/" component={EventPage} />
         <AuthRoute path="/login" component={Login} />
         <AuthRoute path="/signup" component={Signup} />
-        <Route path="/events/:id" component={Event} />
+        <Route path="/events/:eventId" component={Event} />
         <Route path="/logout" component={Logout} />
       </Switch>
     </Router>

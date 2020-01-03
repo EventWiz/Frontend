@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllEvents } from '../actions/events';
-import svgImg from '../assets/homeSvg.svg';
-import { EventPageStyle, CardContainer } from '../styles/Event';
+import { getAllEvents } from '../../actions/events';
+import svgImg from '../../assets/homeSvg.svg';
+import { EventPageStyle, CardContainer } from '../../styles/Event';
 import EventCard from './EventCard';
 
-const EventPage = props => {
+const EventPage = ({
+  user,
+  loggedIn,
+  events,
+  getAllEvents: fetchAllEvents,
+}) => {
+  useEffect(() => {
+    fetchAllEvents();
+  }, [fetchAllEvents]);
+
   return (
     <EventPageStyle>
       <header>
@@ -15,11 +24,11 @@ const EventPage = props => {
             <h1>Event Wiz</h1>
           </Link>
           <div className="links">
-            {props.loggedIn ? (
+            {loggedIn ? (
               <React.Fragment>
                 <Link to="/create-event">Create Event</Link>
                 <Link className="logout-btn" to="/logout">
-                  {props.user?.firstName}, Logout
+                  {user?.firstName}, Logout
                 </Link>
               </React.Fragment>
             ) : (
@@ -43,7 +52,7 @@ const EventPage = props => {
       <CardContainer>
         <h2>Explore Events</h2>
         <div className="cards">
-          {props.events.map(event => (
+          {events.map(event => (
             <EventCard event={event} key={event.id} />
           ))}
         </div>

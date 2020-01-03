@@ -6,9 +6,8 @@ export const EventDescriptionContainer = styled.div`
   height: 95vh;
 
   section {
-    width: 50%;
-
     &:first-child {
+      width: 60%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -33,6 +32,7 @@ export const EventDescriptionContainer = styled.div`
       h2 {
         font-size: 5rem;
         font-weight: 700;
+        text-align: center;
       }
 
       p {
@@ -42,7 +42,7 @@ export const EventDescriptionContainer = styled.div`
         line-height: 1.4;
       }
 
-      button {
+      .desc-button {
         border-radius: 50px;
         background: #666a7c;
         border: none;
@@ -50,11 +50,13 @@ export const EventDescriptionContainer = styled.div`
         font-size: 2rem;
         padding: 10px;
         width: 250px;
+        text-align: center;
         cursor: pointer;
       }
     }
 
     &:last-child {
+      width: 40%;
       background: rgba(24, 23, 23, 0.06);
       display: flex;
       flex-direction: column;
