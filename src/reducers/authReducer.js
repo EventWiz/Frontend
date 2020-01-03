@@ -1,4 +1,9 @@
-import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS } from '../actions/auth';
+import {
+  AUTH_FAILURE,
+  AUTH_START,
+  LOGIN_SUCCESS,
+  SIGNUP_SUCCESS,
+} from '../actions/auth';
 
 const initialState = {
   user: null,
@@ -9,13 +14,13 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_START:
+    case AUTH_START:
       return {
         ...state,
         error: '',
         loading: true,
       };
-    case LOGIN_FAILURE:
+    case AUTH_FAILURE:
       return {
         ...state,
         error: action.payload,
@@ -30,6 +35,11 @@ const authReducer = (state = initialState, action) => {
         user: {
           ...action.payload,
         },
+      };
+    case SIGNUP_SUCCESS:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;
