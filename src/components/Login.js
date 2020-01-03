@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -7,7 +8,7 @@ import { logIn } from '../actions/auth';
 import { Button } from '../styles/shared/Button';
 import { Form } from '../styles/shared/Form';
 import { Input } from '../styles/shared/Input';
-import { Link } from 'react-router-dom';
+import Layout from './Layout';
 
 const Login = props => {
   const formik = useFormik({
@@ -24,48 +25,50 @@ const Login = props => {
     onSubmit: values => {
       props.logIn(values).then(res => {
         if (res) {
-          props.history.push('/');
+          props.history.push(props.history.location.state?.prevLocation || '/');
         }
       });
     },
   });
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
-      <h1>Log in</h1>
-      {props.error && <p>{props.error}</p>}
-      {props.history.location.state?.message && (
-        <p>{props.history.location.state.message}</p>
-      )}
-      {formik.touched.email && formik.errors.email ? (
-        <p>{formik.errors.email}</p>
-      ) : null}
-      <Input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-        placeholder="Email"
-      />
-      {formik.touched.password && formik.errors.password ? (
-        <p>{formik.errors.password}</p>
-      ) : null}
-      <Input
-        id="password"
-        name="password"
-        type="password"
-        onChange={formik.handleChange}
-        value={formik.values.password}
-        placeholder="Password"
-      />
-      <Button type="submit" disabled={props.isLoading}>
-        {props.loading ? <ClipLoader /> : 'Login'}
-      </Button>
-      <p>
-        Don't have an account? <Link to="/signup">Register here</Link>
-      </p>
-    </Form>
+    <Layout>
+      <Form onSubmit={formik.handleSubmit}>
+        <h1>Log in</h1>
+        {props.error && <p>{props.error}</p>}
+        {props.history.location.state?.message && (
+          <p>{props.history.location.state.message}</p>
+        )}
+        {formik.touched.email && formik.errors.email ? (
+          <p>{formik.errors.email}</p>
+        ) : null}
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          placeholder="Email"
+        />
+        {formik.touched.password && formik.errors.password ? (
+          <p>{formik.errors.password}</p>
+        ) : null}
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          onChange={formik.handleChange}
+          value={formik.values.password}
+          placeholder="Password"
+        />
+        <Button type="submit" disabled={props.isLoading}>
+          {props.loading ? <ClipLoader /> : 'Login'}
+        </Button>
+        <p>
+          Don't have an account? <Link to="/signup">Register here</Link>
+        </p>
+      </Form>
+    </Layout>
   );
 };
 
