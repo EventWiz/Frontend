@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { getAllEvents } from '../../actions/events';
 import svgImg from '../../assets/homeSvg.svg';
 import { EventPageStyle, CardContainer } from '../../styles/Event';
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 import EventCard from './EventCard';
 
 const EventPage = ({
