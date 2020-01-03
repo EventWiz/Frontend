@@ -9,14 +9,21 @@ export const EventPageStyle = styled.div`
     nav {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       margin: 20px 10px;
+
       a {
         color: #fff;
         margin: 0 10px;
-        font-size: 18px;
+        font-size: 2rem;
         font-weight: 300;
         font-family: 'Open Sans', sans-serif;
 
+        h1 {
+          font-size: 3.5rem;
+          font-family: 'Luckiest Guy', cursive;
+          color: #fff;
+        }
       }
       .links {
         a {
