@@ -3,6 +3,7 @@ import {
   AUTH_START,
   LOGIN_SUCCESS,
   SIGNUP_SUCCESS,
+  LOGOUT,
 } from '../actions/auth';
 
 const initialState = {
@@ -40,6 +41,10 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+      };
+    case LOGOUT:
+      return {
+        ...initialState,
       };
     default:
       return state;

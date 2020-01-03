@@ -1,15 +1,26 @@
 import axios from 'axios';
 import { apiURL } from '../config';
 import { setToken } from '../utils/localStorage';
+import { axiosWithAuth } from '../utils/axiosInstance';
 
 export const AUTH_START = 'AUTH_START';
 export const AUTH_FAILURE = 'AUTH_FAILURE';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const LOGOUT = 'LOGOUT';
 
-export const loggedIn = user => {
-  return { type: LOGIN_SUCCESS, payload: user };
+export const loggedIn = () => dispatch => {
+  dispatch({ type: AUTH_START });
+  return axiosWithAuth()
+    .get(`${apiURL}/api/users/profile`)
+    .then(res => {
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data.user });
+      return true;
+    })
+    .catch(err => {
+      dispatch({ type: AUTH_FAILURE, payload: err.response?.data.message });
+    });
 };
 
 export const logIn = creds => dispatch => {
@@ -18,11 +29,11 @@ export const logIn = creds => dispatch => {
     .post(`${apiURL}/api/auth/login`, creds)
     .then(res => {
       setToken(res.data.token);
-      dispatch(loggedIn(res.data.user));
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data.user });
       return true;
     })
     .catch(err => {
-      dispatch({ type: AUTH_FAILURE, payload: err.response.data.message });
+      dispatch({ type: AUTH_FAILURE, payload: err.response?.data.message });
     });
 };
 
@@ -37,7 +48,12 @@ export const signUp = creds => dispatch => {
       }
     })
     .catch(err => {
-      dispatch({ type: AUTH_FAILURE, payload: err.response.data.message });
+      dispatch({ type: AUTH_FAILURE, payload: err.response?.data.message });
       return false;
     });
+};
+
+export const logout = () => {
+  localStorage.clear();
+  return { type: LOGOUT };
 };

@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -7,7 +8,6 @@ import { logIn } from '../actions/auth';
 import { Button } from '../styles/shared/Button';
 import { Form } from '../styles/shared/Form';
 import { Input } from '../styles/shared/Input';
-import { Link } from 'react-router-dom';
 import Layout from './Layout';
 
 const Login = props => {
@@ -25,7 +25,7 @@ const Login = props => {
     onSubmit: values => {
       props.logIn(values).then(res => {
         if (res) {
-          props.history.push('/');
+          props.history.push(props.history.location.state?.prevLocation || '/');
         }
       });
     },

@@ -20,9 +20,16 @@ export const EventPageStyle = styled.div`
       }
       .links {
         a {
+          font-weight: 500;
+
           &:hover {
             text-decoration: underline;
           }
+        }
+        .logout-btn {
+          border: 1px solid white;
+          border-radius: 3px;
+          padding: 5px;
         }
       }
     }
