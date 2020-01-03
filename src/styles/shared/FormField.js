@@ -62,15 +62,15 @@ export const FormField = styled.form`
     display: flex;
     justify-content: center
     button {
-      width: 200px;
-      font-size: 24px;
+      width: 150px;
+      font-size: 16px;
       text-align: center;
       background: #6438cf;
       border: none;
       border-radius: 5px;
-      padding:20px
+      padding:10px
       color: #fff
-      margin: 20px;
+      margin: 5px;
     }
   }
 `;

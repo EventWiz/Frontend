@@ -11,6 +11,7 @@ const Agenda = props => (
     initialValues={{
       agenda: [
         {
+          event_id: props.event_id,
           topic: '',
           speaker: '',
           venue: '',
@@ -23,7 +24,7 @@ const Agenda = props => (
     onSubmit={values => {
       props.createSession(values).then(res => {
         if (res) {
-          props.history.push(`/events`);
+          props.history.push(`/events/${props.event_id}`);
         }
       });
     }}
@@ -80,7 +81,7 @@ const Agenda = props => (
               </button>
             )}
             <Button type='submit' disabled={props.isLoading}>
-              {props.loading ? <ClipLoader /> : 'Save and Continue'}
+              {props.loading ? <ClipLoader /> : 'Save'}
             </Button>
           </FormField>
         )}
@@ -91,6 +92,7 @@ const Agenda = props => (
 
 const mapStateToProps = ({ sessionReducer }) => ({
   loading: sessionReducer.loading,
-  error: sessionReducer.error
+  error: sessionReducer.error,
+  event_id: sessionReducer.event_id
 });
 export default connect(mapStateToProps, { createSession })(Agenda);

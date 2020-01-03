@@ -20,7 +20,6 @@ export const createEvent = details => async dispatch => {
     dispatch(eventCreate(eventDetails));
     return eventDetails;
   } catch (error) {
-    console.log(error);
     dispatch({
       type: CREATE_EVENT_FAILURE,
       payload: error.response.data.message

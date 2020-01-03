@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { axiosWithAuth } from '../utils/axiosInstance';
 import { apiURL } from '../config';
 
 export const CREATE_SESSION_LOADING = 'CREATE_SESSION_LOADING';
@@ -13,18 +13,16 @@ export const sessionCreate = session => ({
 export const createSession = details => async dispatch => {
   try {
     dispatch({ type: CREATE_SESSION_LOADING });
-    console.log(details.agenda);
-    const sessionDetails = await axios.post(
+    const sessionDetails = await axiosWithAuth().post(
       `${apiURL}/api/sessions/create`,
       details.agenda
     );
     dispatch(sessionCreate(sessionDetails));
     return sessionDetails;
   } catch (error) {
-    console.log(error);
     dispatch({
       type: CREATE_SESSION_FAILURE,
-      payload: error.response.data.message
+      payload: error.response
     });
   }
 };
