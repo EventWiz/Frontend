@@ -13,7 +13,7 @@ const EventAgenda = ({ sessions }) => {
       <section>
         {sessions.length > 0 &&
           sessions.map(session => (
-            <div>
+            <div key={`session-${session.id}`}>
               <section>
                 <p>{moment(session.start_time).format('dddd, MMMM Do YYYY')}</p>
                 <h3>{moment(session.start_time).format('h:mm A')}</h3>

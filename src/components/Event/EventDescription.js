@@ -35,7 +35,7 @@ const EventDescription = ({ event, loggedIn }) => {
       <section>
         {event.Sessions.length &&
           event.Sessions.slice(0, 3).map(session => (
-            <div>
+            <div key={`session-${session.id}`}>
               <div>
                 <GoCalendar />
                 <div>
