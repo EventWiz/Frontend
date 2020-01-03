@@ -1,14 +1,17 @@
 import React from 'react';
+import axios from 'axios';
 import { Field, Formik } from 'formik';
 import { connect } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { createEvent } from '../actions/event-creation';
 import { FormField } from '../styles/shared/FormField';
 import { Button } from '../styles/shared/Button';
+import { imgUrl, preset } from '../config';
 
 const EventForm = props => (
   <Formik
     initialValues={{
+      type: 'free',
       title: '',
       desc: '',
       img: '',
@@ -25,7 +28,7 @@ const EventForm = props => (
         }
       });
     }}
-    >
+  >
     {formik => (
       <FormField onSubmit={formik.handleSubmit}>
         <h1>Tell us about your event</h1>
@@ -35,7 +38,26 @@ const EventForm = props => (
           name='desc'
           placeholder='What is your event about?'
         />
-        <Field type='text' name='img' placeholder='Event image' />
+        <input
+          name='img'
+          type='file'
+          accept='image/*'
+          onChange={event => {
+            const file = event.currentTarget.files[0];
+            console.log(file);
+            const formData = new FormData();
+            const config = {
+              headers: { 'content-type': 'multipart/form-data' }
+            };
+            formData.append('file', file);
+            formData.append('upload_preset', preset);
+            console.log(preset);
+            axios.post(imgUrl, formData, config).then(data => {
+              console.log(data.data.secure_url);
+              formik.setFieldValue('img', data.data.secure_url);
+            });
+          }}
+        />
         <Field type='text' name='location' placeholder='Event location' />
         <Field type='text' name='start_date' placeholder='Start' />
         <Field type='text' name='end_date' placeholder='End' />

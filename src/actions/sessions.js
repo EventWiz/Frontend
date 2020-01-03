@@ -13,10 +13,10 @@ export const sessionCreate = session => ({
 export const createSession = details => async dispatch => {
   try {
     dispatch({ type: CREATE_SESSION_LOADING });
-    console.log(details);
+    console.log(details.agenda);
     const sessionDetails = await axios.post(
       `${apiURL}/api/sessions/create`,
-      details
+      details.agenda
     );
     dispatch(sessionCreate(sessionDetails));
     return sessionDetails;
