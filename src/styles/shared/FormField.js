@@ -54,8 +54,7 @@ export const FormField = styled.form`
   }
   label {
     width: 80%;
-    padding: 5px;
-    margin: 10px 10px 5px 10px;
+    margin: 10px 10px 5px 0px;
     font-size: 1.7rem;
     font-weight: bold;
     color: #666a7c;
