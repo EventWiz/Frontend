@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { createSession } from '../actions/sessions';
 import { Formik, Field, FieldArray } from 'formik';
-import { FormField } from '../styles/shared/FormField';
+import { FormField, BackDesign } from '../styles/shared/FormField';
 import { Button } from '../styles/shared/Button';
 
 const Agenda = props => (
@@ -32,28 +32,37 @@ const Agenda = props => (
       <FieldArray
         name='agenda'
         render={arrayHelpers => (
+          <BackDesign>
           <FormField onSubmit={handleSubmit}>
             <h1>Create Agenda</h1>
             {values.agenda && values.agenda.length > 0 ? (
               values.agenda.map((agenda, index) => (
-                <div key={index}>
+                // <div key={index}>
+                <>
+                  <label>Topic</label>
                   <Field
                     name={`agenda.${index}.topic`}
                     placeholder='Session topic'
                   />
+                  <label>Speaker</label>
                   <Field
                     name={`agenda.${index}.speaker`}
                     placeholder='Speaker name'
                   />
+                  <label>Venue</label>
                   <Field name={`agenda.${index}.venue`} placeholder='Venue' />
+
+                  <label>Start Time</label>
                   <Field
                     name={`agenda.${index}.start_time`}
                     placeholder='Start time'
                   />
+                  <label>End Time</label>
                   <Field
                     name={`agenda.${index}.end_time`}
                     placeholder='End time'
                   />
+                  <label>Date</label>
                   <Field name={`agenda.${index}.date`} placeholder='Date' />
                   <div className='icon'>
                     <button
@@ -69,7 +78,7 @@ const Agenda = props => (
                       Add
                     </button>
                   </div>
-                </div>
+                  </>
               ))
             ) : (
               <button
@@ -84,6 +93,7 @@ const Agenda = props => (
               {props.loading ? <ClipLoader /> : 'Save'}
             </Button>
           </FormField>
+          </BackDesign>
         )}
       />
     )}
