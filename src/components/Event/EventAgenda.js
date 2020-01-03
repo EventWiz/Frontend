@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { EventAgendaContainer } from './event.style';
+import { convertFrom24To12Format } from '../../utils/convert24to12';
 
 const EventAgenda = ({ sessions }) => {
   return (
@@ -15,8 +16,8 @@ const EventAgenda = ({ sessions }) => {
           sessions.map(session => (
             <div key={`session-${session.id}`}>
               <section>
-                <p>{moment(session.start_time).format('dddd, MMMM Do YYYY')}</p>
-                <h3>{moment(session.start_time).format('h:mm A')}</h3>
+                <p>{moment(session.date).format('dddd, MMMM Do YYYY')}</p>
+                <h3>{convertFrom24To12Format(session.start_time)}</h3>
               </section>
               <section>
                 <h2>{session.topic}</h2>

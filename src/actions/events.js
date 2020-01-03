@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { apiURL } from '../config';
+import { axiosWithAuth } from '../utils/axiosInstance';
 
 export const FETCH_EVENTS_LOADING = 'FETCH_EVENTS_LOADING';
 export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS';
@@ -25,10 +26,24 @@ export const getAllEvents = () => async dispatch => {
 export const getEvent = id => async dispatch => {
   dispatch({ type: FETCH_EVENTS_LOADING });
   try {
-    const eventRes = await axios.get(`${apiURL}/api/events/${id}`);
+    const eventRes = await axiosWithAuth().get(`${apiURL}/api/events/${id}`);
     dispatch({
       type: FETCH_EVENT_SUCCESS,
       payload: eventRes.data.event,
+    });
+  } catch (error) {
+    dispatch({
+      type: FETCH_EVENTS_FAILURE,
+      payload: error.response?.data.message,
+    });
+  }
+};
+
+export const rsvpEvent = id => async dispatch => {
+  dispatch({ type: FETCH_EVENTS_LOADING });
+  try {
+    await axiosWithAuth().post(`${apiURL}/api/rsvp/create`, {
+      event_id: id,
     });
   } catch (error) {
     dispatch({

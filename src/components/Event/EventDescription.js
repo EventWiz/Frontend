@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { EventDescriptionContainer } from './event.style';
 
-const EventDescription = ({ event, loggedIn }) => {
+const EventDescription = ({ event, loggedIn, rsvpEvent }) => {
   const history = useHistory();
   return (
     <EventDescriptionContainer>
@@ -16,7 +16,13 @@ const EventDescription = ({ event, loggedIn }) => {
         <h2>{event.title}</h2>
         <p>{event.desc}</p>
         {loggedIn ? (
-          <button className="desc-button">Get Tickets</button>
+          <button
+            className="desc-button"
+            disabled={event.registered}
+            onClick={() => rsvpEvent(event.id)}
+          >
+            {event.registered ? 'Registered' : 'Get Tickets'}
+          </button>
         ) : (
           <Link
             className="desc-button"
@@ -49,7 +55,7 @@ const EventDescription = ({ event, loggedIn }) => {
               </div>
               <div>
                 <GoClock />
-                <p>{moment(session.start_time).format('h:mm a')}</p>
+                <p>{moment(session.date).format('h:mm a')}</p>
               </div>
             </div>
           ))}

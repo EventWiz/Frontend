@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { getEvent } from '../../actions/events';
+import { getEvent, rsvpEvent } from '../../actions/events';
 import { connect } from 'react-redux';
 import EventDescription from './EventDescription';
 import EventAgenda from './EventAgenda';
 
-const Event = ({ getEvent: fetchEvent, match, event, loggedIn }) => {
+const Event = ({ getEvent: fetchEvent, match, event, loggedIn, rsvpEvent }) => {
   const eventId = match.params?.eventId;
 
   useEffect(() => {
@@ -15,7 +15,11 @@ const Event = ({ getEvent: fetchEvent, match, event, loggedIn }) => {
     <div>
       {event && (
         <React.Fragment>
-          <EventDescription event={event} loggedIn={loggedIn} />
+          <EventDescription
+            event={event}
+            loggedIn={loggedIn}
+            rsvpEvent={rsvpEvent}
+          />
           <EventAgenda sessions={event.Sessions} />
         </React.Fragment>
       )}
@@ -28,4 +32,4 @@ const mapStateToProps = ({ eventReducer, authReducer }) => ({
   loggedIn: authReducer.loggedIn,
 });
 
-export default connect(mapStateToProps, { getEvent })(Event);
+export default connect(mapStateToProps, { getEvent, rsvpEvent })(Event);
