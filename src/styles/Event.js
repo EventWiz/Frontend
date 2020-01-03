@@ -26,11 +26,22 @@ export const EventPageStyle = styled.div`
         }
       }
     }
+
+    @media(max-width: 500px) {
+      nav {
+        width: 100%;
+        margin: 10px 5px;
+        a {
+          font-size: 12px;
+          margin: 0 5px;
+        }
+      }
+    }
   }
 
   .hero {
     margin: 30px auto;
-    width: 60%
+    width: 80%
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,6 +63,32 @@ export const EventPageStyle = styled.div`
     img {
       width: 60%;
     }
+    
+    @media(max-width: 768px) {
+      .hero-text {
+        h2 {
+          font-size: 42px;
+        }
+      }
+    }
+
+    @media(max-width: 500px) {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .hero-text {
+        width: 80%
+        h2 {
+          width: 100%
+          font-size: 35px;
+        }
+      }
+      img {
+        width: 100%;
+      }
+    }
+
   }
 
   footer {
@@ -91,6 +128,7 @@ export const EventCardStyle = styled.div`
   width: 250px;
   height: 270px;
   box-shadow: -1px 1px 5px 1px rgba(219, 219, 219, 1);
+  margin: 10px 0;
 
   img {
     width: 100%;
