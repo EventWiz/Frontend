@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HeaderContainer } from '../styles/Header';
+import logo from '../assets/logo.png';
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <Link to="/">
-        <h1>Event Wiz</h1>
+      <Link to='/'>
+        <img src={logo} alt='App logo' />
       </Link>
     </HeaderContainer>
   );

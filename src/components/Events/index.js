@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { getAllEvents } from '../../actions/events';
 import svgImg from '../../assets/homeSvg.svg';
 import { EventPageStyle, CardContainer } from '../../styles/Event';
+import logo from '../assets/logo.png';
 import EventCard from './EventCard';
 
 const EventPage = ({
@@ -21,7 +22,7 @@ const EventPage = ({
       <header>
         <nav>
           <Link to="/">
-            <h1>Event Wiz</h1>
+            <img src={logo} alt="App logo" />
           </Link>
           <div className="links">
             {loggedIn ? (

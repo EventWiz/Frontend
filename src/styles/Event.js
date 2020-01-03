@@ -25,6 +25,9 @@ export const EventPageStyle = styled.div`
           color: #fff;
         }
       }
+      img {
+        width: 100px
+      }
       .links {
         a {
           font-weight: 500;

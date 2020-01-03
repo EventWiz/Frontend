@@ -65,12 +65,6 @@ export const GlobalStyle = createGlobalStyle`
     color: initial
   }
   
-  *,html {
-    font-size: 62.5%;
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 500;
-  }
 
   input, a, button {
     outline: none;

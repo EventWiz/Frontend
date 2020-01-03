@@ -8,10 +8,8 @@ export const HeaderContainer = styled.header`
   padding: 15px;
 
   a {
-    h1 {
-      font-size: 4rem;
-      font-family: 'Luckiest Guy', cursive;
-      color: #6438CF;
+    img {
+      width: 120px;
     }
   }
 `;
