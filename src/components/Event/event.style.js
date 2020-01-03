@@ -5,6 +5,11 @@ export const EventDescriptionContainer = styled.div`
   display: flex;
   height: 95vh;
 
+  @media (max-width: 500px) {
+    flex-direction: column;
+    height: 100%;
+  }
+
   section {
     &:first-child {
       width: 60%;
@@ -13,6 +18,11 @@ export const EventDescriptionContainer = styled.div`
       justify-content: center;
       align-items: center;
       padding: 80px;
+
+      @media (max-width: 500px) {
+        width: 100%;
+        padding: 50px 20px;
+      }
 
       div {
         position: fixed;
@@ -62,6 +72,10 @@ export const EventDescriptionContainer = styled.div`
       flex-direction: column;
       justify-content: center;
       padding: 0 25px;
+
+      @media (max-width: 500px) {
+        display: none;
+      }
 
       svg {
         font-size: 2.5rem;
@@ -128,6 +142,10 @@ export const EventAgendaContainer = styled.div`
     width: 80%;
     display: flex;
     align-items: center;
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
 
     section {
       width: 50%;
