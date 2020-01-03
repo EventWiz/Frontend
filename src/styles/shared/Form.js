@@ -29,6 +29,7 @@ export const Form = styled.form`
       margin: 10px 0;
       a {
         color: #6438cf;
+        font-size: 1.3rem;
       }
     }
   }

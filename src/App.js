@@ -11,10 +11,10 @@ const App = () => {
     <Router>
       <GlobalStyle />
       <Switch>
-        <Route exact path='/' component={EventPage} />
-        <Route path='/login' component={Login} />
+        <Route exact path="/" component={EventPage} />
+        <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/event/:id" component={Event} />
+        <Route path="/events/:id" component={Event} />
       </Switch>
     </Router>
   );
