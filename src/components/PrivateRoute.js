@@ -14,7 +14,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
               pathname: '/login',
               state: {
                 prevLocation: props.history.location.pathname,
-                error: 'You need to login first!',
+                message: 'You need to login first!',
               },
             }}
           />
