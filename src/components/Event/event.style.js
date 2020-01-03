@@ -5,15 +5,24 @@ export const EventDescriptionContainer = styled.div`
   display: flex;
   height: 95vh;
 
-  section {
-    width: 50%;
+  @media (max-width: 500px) {
+    flex-direction: column;
+    height: 100%;
+  }
 
+  section {
     &:first-child {
+      width: 60%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 80px;
+
+      @media (max-width: 500px) {
+        width: 100%;
+        padding: 50px 20px;
+      }
 
       div {
         position: fixed;
@@ -33,6 +42,13 @@ export const EventDescriptionContainer = styled.div`
       h2 {
         font-size: 5rem;
         font-weight: 700;
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 3rem;
+        font-weight: 700;
+        text-align: center;
       }
 
       p {
@@ -42,7 +58,7 @@ export const EventDescriptionContainer = styled.div`
         line-height: 1.4;
       }
 
-      button {
+      .desc-button {
         border-radius: 50px;
         background: #666a7c;
         border: none;
@@ -50,16 +66,22 @@ export const EventDescriptionContainer = styled.div`
         font-size: 2rem;
         padding: 10px;
         width: 250px;
+        text-align: center;
         cursor: pointer;
       }
     }
 
     &:last-child {
+      width: 40%;
       background: rgba(24, 23, 23, 0.06);
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 0 25px;
+
+      @media (max-width: 500px) {
+        display: none;
+      }
 
       svg {
         font-size: 2.5rem;
@@ -126,6 +148,10 @@ export const EventAgendaContainer = styled.div`
     width: 80%;
     display: flex;
     align-items: center;
+
+    @media (max-width: 500px) {
+      width: 100%;
+    }
 
     section {
       width: 50%;
