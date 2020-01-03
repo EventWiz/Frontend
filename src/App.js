@@ -16,6 +16,7 @@ const App = () => {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <PrivateRoute path="/events/:id" component={Event} />
+        <Route path="/logout" component={Logout} />
       </Switch>
     </Router>
   );

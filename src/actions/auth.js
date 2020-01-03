@@ -41,3 +41,8 @@ export const signUp = creds => dispatch => {
       return false;
     });
 };
+
+export const logout = () => {
+  localStorage.clear();
+  return { type: LOGOUT };
+};
