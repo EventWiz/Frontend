@@ -1,8 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { GoLocation, GoCalendar, GoClock } from 'react-icons/go';
-import { EventDescriptionContainer } from './event.style';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
+import { EventDescriptionContainer } from './event.style';
 
 const EventDescription = ({ event, loggedIn }) => {
   const history = useHistory();
@@ -32,59 +33,26 @@ const EventDescription = ({ event, loggedIn }) => {
         <p>{event.capacity} Tickets Left</p>
       </section>
       <section>
-        <div>
-          <div>
-            <GoCalendar />
+        {event.Sessions.length &&
+          event.Sessions.slice(0, 3).map(session => (
             <div>
-              <h3>Opening Ceremony</h3>
-              <p>This section would be managed by Nabelaah Johnson</p>
+              <div>
+                <GoCalendar />
+                <div>
+                  <h3>{session.topic}</h3>
+                  <p>This section would be managed by {session.speaker}</p>
+                </div>
+              </div>
+              <div>
+                <GoLocation />
+                <p>{session.venue}</p>
+              </div>
+              <div>
+                <GoClock />
+                <p>{moment(session.start_time).format('h:mm a')}</p>
+              </div>
             </div>
-          </div>
-          <div>
-            <GoLocation />
-            <p>Cafeteria, Andela, Nigeria</p>
-          </div>
-          <div>
-            <GoClock />
-            <p>12pm</p>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <GoCalendar />
-            <div>
-              <h3>Opening Ceremony</h3>
-              <p>This section would be managed by Nabelaah Johnson</p>
-            </div>
-          </div>
-          <div>
-            <GoLocation />
-            <p>Cafeteria, Andela, Nigeria</p>
-          </div>
-          <div>
-            <GoClock />
-            <p>12pm</p>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <GoCalendar />
-            <div>
-              <h3>Opening Ceremony</h3>
-              <p>This section would be managed by Nabelaah Johnson</p>
-            </div>
-          </div>
-          <div>
-            <GoLocation />
-            <p>Cafeteria, Andela, Nigeria</p>
-          </div>
-          <div>
-            <GoClock />
-            <p>12pm</p>
-          </div>
-        </div>
+          ))}
       </section>
     </EventDescriptionContainer>
   );

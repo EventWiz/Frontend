@@ -16,7 +16,7 @@ const Event = ({ getEvent: fetchEvent, match, event, loggedIn }) => {
       {event && (
         <React.Fragment>
           <EventDescription event={event} loggedIn={loggedIn} />
-          <EventAgenda sessions={event?.Sessions} />
+          <EventAgenda sessions={event.Sessions} />
         </React.Fragment>
       )}
     </div>
