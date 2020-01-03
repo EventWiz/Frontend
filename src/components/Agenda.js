@@ -59,13 +59,13 @@ const Agenda = props => (
                       type='button'
                       onClick={() => arrayHelpers.remove(index)}
                     >
-                      -
+                      Remove
                     </button>
                     <button
                       type='button'
                       onClick={() => arrayHelpers.insert(index, '')}
                     >
-                      +
+                      Add
                     </button>
                   </div>
                 </div>

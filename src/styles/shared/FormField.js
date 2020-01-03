@@ -62,11 +62,13 @@ export const FormField = styled.form`
     display: flex;
     justify-content: center
     button {
+      width: 200px;
       font-size: 24px;
       text-align: center;
       background: #6438cf;
-      border-radius: 50%;
-      padding:30px
+      border: none;
+      border-radius: 5px;
+      padding:20px
       color: #fff
       margin: 20px;
     }
