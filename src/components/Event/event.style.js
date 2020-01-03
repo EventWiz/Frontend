@@ -109,6 +109,8 @@ export const EventAgendaContainer = styled.div`
     span {
       background-color: #6438cf;
       padding: 5px;
+      font-weight: 700;
+      font-size: 2.8rem;
     }
   }
 
