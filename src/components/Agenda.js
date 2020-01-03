@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, FieldArray } from 'formik';
+import { FormField } from '../styles/shared/FormField';
 
 const Agenda = () => {
   return (
-    <div>
-      <h1>Create Agenda</h1>
+    <>
       <Formik
         initialValues={{ agenda: [] }}
         onSubmit={values =>
@@ -14,20 +14,21 @@ const Agenda = () => {
           }, 500)
         }
         render={({ values }) => (
-          <Form>
-            <FieldArray
-              name='agenda'
-              render={arrayHelpers => (
-                <div>
-                  {values.agenda && values.agenda.length > 0 ? (
-                    values.agenda.map((agenda, index) => (
-                      <div key={index}>
-                        <Field name={`topic.${index}`} />
-                        <Field name={`speaker.${index}`} />
-                        <Field name={`venue.${index}`} />
-                        <Field name={`start_time.${index}`} />
-                        <Field name={`end_time.${index}`} />
-                        <Field name={`date.${index}`} />
+          <FieldArray
+            name='agenda'
+            render={arrayHelpers => (
+              <FormField>
+                <h1>Create Agenda</h1>
+                {values.agenda && values.agenda.length > 0 ? (
+                  values.agenda.map((agenda, index) => (
+                    <div key={index}>
+                      <Field name={`topic.${index}`} placeholder='Session topic' />
+                      <Field name={`speaker.${index}`} placeholder='Speaker name'/>
+                      <Field name={`venue.${index}`} placeholder='Venue' />
+                      <Field name={`start_time.${index}`} placeholder='Start time' />
+                      <Field name={`end_time.${index}`} placeholder='End time' />
+                      <Field name={`date.${index}`} placeholder='Date'/>
+                      <div className='icon'>
                         <button
                           type='button'
                           onClick={() => arrayHelpers.remove(index)}
@@ -41,24 +42,28 @@ const Agenda = () => {
                           +
                         </button>
                       </div>
-                    ))
-                  ) : (
-                    <button type='button' onClick={() => arrayHelpers.push('')}>
-                      Add a Session
-                    </button>
-                  )}
-                  <div>
-                    <Link to='/preview' className='next'>
-                      Next
-                    </Link>
-                  </div>
+                    </div>
+                  ))
+                ) : (
+                  <button
+                    className='add'
+                    type='button'
+                    onClick={() => arrayHelpers.push('')}
+                  >
+                    Add a Session
+                  </button>
+                )}
+                <div className='next'>
+                  <Link to='/preview' className='next'>
+                    Next
+                  </Link>
                 </div>
-              )}
-            />
-          </Form>
+              </FormField>
+            )}
+          />
         )}
       />
-    </div>
+    </>
   );
 };
 
