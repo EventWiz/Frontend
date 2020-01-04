@@ -8,7 +8,7 @@ export const AuthRoute = ({ component: Component, ...rest }) => (
     render={props => {
       const currentUser = getToken();
       if (currentUser) {
-        return <Redirect to="/" />;
+        return <Redirect to='/' />;
       }
 
       return <Component {...props} />;

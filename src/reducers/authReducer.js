@@ -3,14 +3,14 @@ import {
   AUTH_START,
   LOGIN_SUCCESS,
   SIGNUP_SUCCESS,
-  LOGOUT,
+  LOGOUT
 } from '../actions/auth';
 
 const initialState = {
   user: null,
   error: '',
   loading: false,
-  loggedIn: false,
+  loggedIn: false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -19,13 +19,13 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         error: '',
-        loading: true,
+        loading: true
       };
     case AUTH_FAILURE:
       return {
         ...state,
         error: action.payload,
-        loading: false,
+        loading: false
       };
     case LOGIN_SUCCESS:
       return {
@@ -34,17 +34,17 @@ const authReducer = (state = initialState, action) => {
         loading: false,
         loggedIn: true,
         user: {
-          ...action.payload,
-        },
+          ...action.payload
+        }
       };
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        loading: false,
+        loading: false
       };
     case LOGOUT:
       return {
-        ...initialState,
+        ...initialState
       };
     default:
       return state;

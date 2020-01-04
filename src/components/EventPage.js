@@ -13,7 +13,7 @@ const EventPage = props => {
       <header>
         <nav>
           <Link to='/'>
-            <img src={logo} alt='App logo'/>
+            <img src={logo} alt='App logo' />
           </Link>
           <div className='links'>
             {props.loggedIn ? (

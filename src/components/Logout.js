@@ -10,7 +10,7 @@ const Logout = props => {
 
   return (
     <React.Fragment>
-      <Redirect to="/" />
+      <Redirect to='/' />
     </React.Fragment>
   );
 };

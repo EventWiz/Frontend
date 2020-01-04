@@ -8,7 +8,7 @@ const EventDescription = () => {
     <EventDescriptionContainer>
       <section>
         <div>
-          <Link to="/">&larr; Back to Events</Link>
+          <Link to='/'>&larr; Back to Events</Link>
         </div>
         <h2>Eventz</h2>
         <p>

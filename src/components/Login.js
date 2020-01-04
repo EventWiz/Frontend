@@ -14,13 +14,13 @@ const Login = props => {
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: '',
+      password: ''
     },
     validationSchema: Yup.object({
       email: Yup.string()
         .email('Invalid email address')
         .required('Email Address Required'),
-      password: Yup.string().required('Invalid Password'),
+      password: Yup.string().required('Invalid Password')
     }),
     onSubmit: values => {
       props.logIn(values).then(res => {
@@ -28,7 +28,7 @@ const Login = props => {
           props.history.push(props.history.location.state?.prevLocation || '/');
         }
       });
-    },
+    }
   });
 
   return (
@@ -43,29 +43,29 @@ const Login = props => {
           <p>{formik.errors.email}</p>
         ) : null}
         <Input
-          id="email"
-          name="email"
-          type="email"
+          id='email'
+          name='email'
+          type='email'
           onChange={formik.handleChange}
           value={formik.values.email}
-          placeholder="Email"
+          placeholder='Email'
         />
         {formik.touched.password && formik.errors.password ? (
           <p>{formik.errors.password}</p>
         ) : null}
         <Input
-          id="password"
-          name="password"
-          type="password"
+          id='password'
+          name='password'
+          type='password'
           onChange={formik.handleChange}
           value={formik.values.password}
-          placeholder="Password"
+          placeholder='Password'
         />
-        <Button type="submit" disabled={props.isLoading}>
+        <Button type='submit' disabled={props.isLoading}>
           {props.loading ? <ClipLoader /> : 'Login'}
         </Button>
         <p>
-          Don't have an account? <Link to="/signup">Register here</Link>
+          Don't have an account? <Link to='/signup'>Register here</Link>
         </p>
       </Form>
     </Layout>
@@ -74,7 +74,7 @@ const Login = props => {
 
 const mapStateToProps = ({ authReducer }) => ({
   loading: authReducer.loading,
-  error: authReducer.error,
+  error: authReducer.error
 });
 
 export default connect(mapStateToProps, { logIn })(Login);

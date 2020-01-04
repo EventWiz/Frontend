@@ -16,7 +16,7 @@ const Signup = props => {
       email: '',
       password: '',
       firstName: '',
-      lastName: '',
+      lastName: ''
     },
     validationSchema: Yup.object({
       firstName: Yup.string()
@@ -30,18 +30,18 @@ const Signup = props => {
         .required('Email Address Required'),
       password: Yup.string()
         .min(8, 'Password must be a minimum of 8 characters')
-        .required('Password is Required'),
+        .required('Password is Required')
     }),
     onSubmit: values => {
       props.signUp(values).then(res => {
         if (res) {
           props.history.push('/login', {
             message:
-              'Your Account have been created successfully, Please Login 😊',
+              'Your Account have been created successfully, Please Login 😊'
           });
         }
       });
-    },
+    }
   });
 
   return (
@@ -53,51 +53,51 @@ const Signup = props => {
           <p>{formik.errors.firstName}</p>
         ) : null}
         <Input
-          id="firstName"
-          name="firstName"
-          type="text"
+          id='firstName'
+          name='firstName'
+          type='text'
           onChange={formik.handleChange}
           value={formik.values.firstName}
-          placeholder="First Name"
+          placeholder='First Name'
         />
         {formik.touched.lastName && formik.errors.lastName ? (
           <p>{formik.errors.lastName}</p>
         ) : null}
         <Input
-          id="lastName"
-          name="lastName"
-          type="text"
+          id='lastName'
+          name='lastName'
+          type='text'
           onChange={formik.handleChange}
           value={formik.values.lastName}
-          placeholder="Last Name"
+          placeholder='Last Name'
         />
         {formik.touched.email && formik.errors.email ? (
           <p>{formik.errors.email}</p>
         ) : null}
         <Input
-          id="email"
-          name="email"
-          type="email"
+          id='email'
+          name='email'
+          type='email'
           onChange={formik.handleChange}
           value={formik.values.email}
-          placeholder="Email"
+          placeholder='Email'
         />
         {formik.touched.password && formik.errors.password ? (
           <p>{formik.errors.password}</p>
         ) : null}
         <Input
-          id="password"
-          name="password"
-          type="password"
+          id='password'
+          name='password'
+          type='password'
           onChange={formik.handleChange}
           value={formik.values.password}
-          placeholder="Password"
+          placeholder='Password'
         />
-        <Button type="submit" disabled={props.isLoading}>
+        <Button type='submit' disabled={props.isLoading}>
           {props.loading ? <ClipLoader /> : 'Sign Up'}
         </Button>
         <p>
-          Already have an account? <Link to="/login">Login here</Link>
+          Already have an account? <Link to='/login'>Login here</Link>
         </p>
       </Form>
     </Layout>
@@ -106,7 +106,7 @@ const Signup = props => {
 
 const mapStateToProps = ({ authReducer }) => ({
   loading: authReducer.loading,
-  error: authReducer.error,
+  error: authReducer.error
 });
 
 export default connect(mapStateToProps, { signUp })(Signup);
