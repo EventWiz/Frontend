@@ -1,42 +1,17 @@
 import {
   FETCH_EVENTS_LOADING,
   FETCH_EVENTS_SUCCESS,
-  FETCH_EVENTS_FAILURE
+  FETCH_EVENT_SUCCESS,
+  FETCH_EVENTS_FAILURE,
+  REGISTER_SUCCESS,
 } from '../actions/events';
-import img from '../assets/img.jpg';
+
 const initialState = {
   loading: false,
-  events: [
-    {
-      id: 1,
-      img: img,
-      title: 'Social Media Week',
-      start_date: '12-01-2020',
-      location: 'Lagos'
-    },
-    {
-      id: 2,
-      img: img,
-      title: 'Social Media Week',
-      start_date: '12-01-2020',
-      location: 'Lagos'
-    },
-    {
-      id: 3,
-      img: img,
-      title: 'Social Media Week',
-      start_date: '12-01-2020',
-      location: 'Lagos'
-    },
-    {
-      id: 4,
-      img: img,
-      title: 'Social Media Week',
-      start_date: '12-01-2020',
-      location: 'Lagos'
-    }
-  ],
-  error: ''
+  events: [],
+  event: null,
+  registered: null,
+  error: '',
 };
 
 const eventReducer = (state = initialState, action) => {
@@ -45,20 +20,34 @@ const eventReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: ''
+        error: '',
       };
     case FETCH_EVENTS_SUCCESS:
       return {
         ...state,
         events: action.payload,
         loading: false,
-        error: ''
+        error: '',
+      };
+    case FETCH_EVENT_SUCCESS:
+      return {
+        ...state,
+        event: action.payload,
+        loading: false,
+        error: '',
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        registered: action.payload,
+        loading: false,
+        error: '',
       };
     case FETCH_EVENTS_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     default:
       return state;
